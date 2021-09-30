@@ -1,9 +1,9 @@
-function [F] = calc_F(State)
+function [F] = calc_F(State,dt)
 
 mu = 3.986*10^14;
-x = State(1,2);
-y = State(1,3);
-z = State(1,4);
+x = State(1);
+y = State(2);
+z = State(3);
 
 xx = x*x;
 yy = y*y;
@@ -18,6 +18,6 @@ M = mu / k * [ (2*xx-yy-zz) 3*y*x        3*z*x;
 A = [ zeros(3,3) eye(3);
         M        zeros(3,3)];
 
-F = eye(6) + A*(State(2,1)-State(1,1));    
+F = eye(6) + A*dt;    
     
 end
